@@ -66,8 +66,19 @@ Write-Output "######## VAGRANT UP ########"
 vagrant up
 
 Write-Output "waiting 120 seconds for the machine to reboot ..."
-
-Start-Sleep -s 120
+Start-Sleep -s 20
+Write-Output "waiting 100 seconds for the machine to reboot ..."
+Start-Sleep -s 20
+Write-Output "waiting  80 seconds for the machine to reboot ..."
+Start-Sleep -s 20
+Write-Output "waiting  60 seconds for the machine to reboot ..."
+Start-Sleep -s 20
+Write-Output "waiting  40 seconds for the machine to reboot ..."
+Start-Sleep -s 20
+Write-Output "waiting  20 seconds for the machine to reboot ..."
+Start-Sleep -s 15
+Write-Output "waiting   5 seconds for the machine to reboot ..."
+Start-Sleep -s 5
 
 Write-Output "####### VM SUCESSFULL INITIALIZED #######"
 
