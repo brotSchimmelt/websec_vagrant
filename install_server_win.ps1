@@ -7,7 +7,6 @@ Write-Output "setting up server with Hyper-V ...`n"
 
 Set-Location $path
 
-
 # select vm provider
 $user_input = -1
 while (($user_input -lt 1) -or ($user_input -gt 3)) {
