@@ -3,3 +3,5 @@ webserver/.vagrant
 
 # the websec project dir
 webserver/resources/websec/
+
+Vagrantfile
