@@ -7,6 +7,9 @@ Write-Output "setting up server with Hyper-V ...`n"
 
 Set-Location $path
 
+# delete old vm
+Remove-Item .\.vagrant
+
 # select vm provider
 $user_input = 0
 while (($user_input -lt 1) -or ($user_input -gt 3)) {
