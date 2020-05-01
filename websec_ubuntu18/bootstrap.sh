@@ -1,9 +1,14 @@
 #!/bin/bash
 
+echo "update packages ..."
 apt-get update
 apt-get upgrade -y
+apt-get autoremove -y
+
+echo "install utilities ..."
 apt-get -y install mc
 
+echo "create new user ..."
 useradd -m -s /bin/bash -G sudo,adm,cdrom,sudo,dip,plugdev,lxd websec
 echo websec:websec | chpasswd
 passwd -e websec
@@ -11,10 +16,12 @@ passwd -e websec
 mv /home/vagrant/cleanup.sh /home/websec/cleanup.sh
 mv /home/vagrant/packages_websec.txt /home/websec/packages_websec.txt
 
+echo "install webserver ..."
 apt-get -y install apache2 php libapache2-mod-php mysql-server php-mysql
 
 rm /var/www/html/index.html
 
+# echo "install docker ..."
 # apt-get install apt-transport-https ca-certificates curl software-properties-common
 # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 # add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -41,5 +48,7 @@ _(())\_)() /((_)((_)\  )\  /((_) )\
 
 
 " >> /etc/motd
+
+echo "reboot ..."
 
 reboot
