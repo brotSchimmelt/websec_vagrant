@@ -38,13 +38,13 @@ If ($file_exits -eq $True) {
 
     Remove-Item $file_to_check
 
-    Write-Output "creating new vagrant file ..."
+    Write-Output "creating new Vagrantfile ..."
 
     Copy-Item -Path $vagrantfile -Destination .\Vagrantfile
 
 }
 else {
-    Write-Output "creating vagrant file ..."
+    Write-Output "creating Vagrantfile ..."
 
     Copy-Item -Path $vagrantfile -Destination .\Vagrantfile
 }
