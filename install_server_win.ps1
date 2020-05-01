@@ -3,7 +3,7 @@ $path = ".\webserver"
 # hyper-v specific vagrantfile (default)
 $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv" 
 
-Write-Output "setting up server with Hyper-V ...`n"
+Write-Output "starting script ...`n"
 
 Set-Location $path
 
