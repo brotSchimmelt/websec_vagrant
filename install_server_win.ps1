@@ -1,5 +1,5 @@
 # Path to the vagrant folder
-$path = ".\websec_ubuntu18"
+$path = ".\webserver"
 # hyper-v specific vagrantfile (default)
 $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv" 
 
