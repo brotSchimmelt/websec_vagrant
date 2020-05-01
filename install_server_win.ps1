@@ -61,7 +61,7 @@ else {
 
 
 # set up the vm with vagrant
-Write-Output "######## VAGRANT UP ########"
+Write-Output "`n######## VAGRANT UP ########`n"
 
 vagrant up
 
@@ -80,7 +80,7 @@ Start-Sleep -s 15
 Write-Output "waiting   5 seconds for the machine to reboot ..."
 Start-Sleep -s 5
 
-Write-Output "####### VM SUCESSFULL INITIALIZED #######"
+Write-Output "`n####### VM SUCESSFULL INITIALIZED #######`n"
 
 Write-Output "starting first ssh session ..."
 
