@@ -9,10 +9,10 @@ Set-Location $path
 
 # select vm provider
 $user_input = -1
-while (($user_input -lt 1) -or ($user_input -gt 3)) {
+while (($user_input -lt 1) -or ($user_input -gt 2)) { # 1 - 4
 
-    Write-Output "1) Hyper-V [Ubuntu 18]`n2) VirtualBox [Ubuntu 18]`n3) Parallels [Ubuntu 18]`n"
-    # Write-Output "4) Hyper-V [Ubuntu 20]`n5) VirtualBox [Ubuntu 20]`n6) Parallels [Ubuntu 20]`n`n"
+    Write-Output "1) Hyper-V [Ubuntu 18]`n2) VirtualBox [Ubuntu 18]`n"
+    # Write-Output "3) Hyper-V [Ubuntu 20]`n4) VirtualBox [Ubuntu 20]`n`n"
     $user_input = Read-Host "Select a provider"
 }
 
@@ -21,10 +21,8 @@ switch ($user_input) {
 
     1 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv" }
     2 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb" }
-    3 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_parallel" }
-    # 4 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv_20" }
-    # 5 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb_20" }
-    # 6 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_parallel_20" }
+    # 3 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv_20" }
+    # 4 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb_20" }
     default { "Error: No valid provider" }
 }
 
