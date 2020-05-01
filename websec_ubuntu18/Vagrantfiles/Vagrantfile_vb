@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "hashicorp/bionic64"
+
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.network "public_network"
+
+  config.vm.provider "virtualbox"
+
+config.vm.provider "virtualbox" do |vb|
+
+  vb.name = "websec_dev_server"
+  vb.memory = 2048
+  vb.cpus = 2
+end
+
+  config.vm.provision "file", source: "./resources/websec", destination: "/home/vagrant/websec"
+  config.vm.provision "file", source: "./resources/packages_websec.txt", destination: "/home/vagrant/packages_websec.txt"
+  config.vm.provision "file", source: "./resources/cleanup.sh", destination: "/home/vagrant/cleanup.sh"
+  config.vm.provision :shell, path: "bootstrap.sh", privileged: true
+end
