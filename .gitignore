@@ -1,5 +1,5 @@
 # the virtual machine
-.vagrant/
+webserver/.vagrant
 
 # the websec project dir
-websec_ubuntu18/resources/websec/
+webserver/resources/websec/
