@@ -1,14 +1,30 @@
 # Path to the vagrant folder
 $path = ".\websec_ubuntu18"
-# hyper-v specific vagrantfile
+# hyper-v specific vagrantfile (default)
 $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv" 
 
-Write-Output "setting up server with Hyper-V ..."
+Write-Output "setting up server with Hyper-V ...`n"
 
 Set-Location $path
 
-# ask for user input 
+# select vm provider
+$user_input = 0
+while (($user_input -lt 1) -or ($user_input -gt 3)) {
 
+    Write-Output "1) Hyper-V`n2) VirtualBox`n3) Parallels`n"
+    $user_input = Read-Host "Select a provider"
+}
+
+# choose Vagrantfile
+switch ($user_input) {
+
+    1 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv" }
+    2 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb" }
+    3 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_parallel" }
+    default { "Error: No valid provider" }
+}
+
+# overwrite existing Vagrantfile if necessary
 Write-Output "checking if 'Vagrantfile' already exists ..."
 
 $file_to_check = ".\Vagrantfile"
@@ -31,6 +47,7 @@ else {
     Copy-Item -Path $vagrantfile -Destination .\Vagrantfile
 }
 
+
 # check if Vagrantfile was succesfully created
 If ($file_exits -eq $False) {
 
@@ -43,6 +60,7 @@ else {
 }
 
 
+# set up the vm with vagrant
 Write-Output "######## VAGRANT UP ########"
 
 vagrant up
