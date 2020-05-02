@@ -30,9 +30,16 @@ rm /var/www/html/index.html
 # systemctl start docker
 # systemctl enable docker
 
-cp /home/vagrant/websec /home/websec/websec_backup
+cp -r /home/vagrant/websec /home/websec/websec_backup
 mv /home/vagrant/websec /var/www/html/websec
 # TODO: chmod to make database writeable
+
+# copy authorized keys to new user
+sudo -i
+mkdir /home/websec/.ssh/
+cp /home/vagrant/.ssh/authorized_keys /home/websec/.ssh/authorized_keys
+chmod 600 /home/websec/.ssh/authorized_keys
+chown websec:websec /home/websec/.ssh/authorized_keys
 
 touch /etc/motd
 echo "
@@ -42,6 +49,7 @@ echo "
 ( \/\/ )( ___)(  _ \/ __)( ___)/ __)
  )    (  )__)  ) _ <\__ \ )__)( (__ 
 (__/\__)(____)(____/(___/(____)\___)
+
 
 
 " >> /etc/motd
