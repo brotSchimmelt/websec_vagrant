@@ -1,0 +1,13 @@
+Vagrant Commands:
+
+vagrant halt ->
+vagrant up -> initial setup or start from halt again
+
+vagrant suspend -> freeze the machine
+vagrant resume -> unfreeze
+
+vagrant ssh -> ssh in the machine with predefined user
+
+vagrant reload -> run after changes in the 'Vagrantfile' were made
+
+vagrant destroy -> kill the machine for good
