@@ -2,7 +2,7 @@
 
 echo "update packages ..."
 apt-get update
-apt-get upgrade -y
+DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq
 apt-get autoremove -y
 
 echo "install utilities ..."
@@ -11,7 +11,7 @@ apt-get -y install mc
 echo "create new user ..."
 useradd -m -s /bin/bash -G sudo,adm,cdrom,sudo,dip,plugdev,lxd websec
 echo websec:websec | chpasswd
-passwd -e websec
+# passwd -e websec
 
 mv /home/vagrant/cleanup.sh /home/websec/cleanup.sh
 mv /home/vagrant/packages_websec.txt /home/websec/packages_websec.txt
@@ -30,22 +30,33 @@ rm /var/www/html/index.html
 # systemctl start docker
 # systemctl enable docker
 
+cp -r /home/vagrant/websec /home/websec/websec_backup
 mv /home/vagrant/websec /var/www/html/websec
-# change mod to make database writeable
+# TODO: chmod to make database writeable
+
+# copy authorized keys to new user
+sudo -i
+mkdir /home/websec/.ssh/
+cp /home/vagrant/.ssh/authorized_keys /home/websec/.ssh/authorized_keys
+chmod 600 /home/websec/.ssh/authorized_keys
+chown websec:websec /home/websec/.ssh/authorized_keys
 
 touch /etc/motd
-
 echo "
-
 
  _    _  ____  ____  ___  ____  ___ 
 ( \/\/ )( ___)(  _ \/ __)( ___)/ __)
  )    (  )__)  ) _ <\__ \ )__)( (__ 
-(__/\__)(____)(____/(___/(____)\___)
+(__/\__)(____)(____/(___/(____)\___)...dev_server
+
+
+
+Remember to change passwords for vagrant ('vagrant'),
+root ('vagrant') and websec ('websec') as soon as possible
+with the cleanup.sh script!
 
 
 " >> /etc/motd
 
 echo "reboot ..."
-
 reboot

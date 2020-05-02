@@ -1,9 +1,11 @@
 # Path to the vagrant folder
-$path = ".\websec_ubuntu18"
+$path = ".\webserver"
 # hyper-v specific vagrantfile (default)
-$vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv" 
+$vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv"
+# vagrantfile with ssh user
+$ssh_file = ".\resources\ssh_files\Vagrantfile_hyperv_ssh"
 
-Write-Output "setting up server with Hyper-V ...`n"
+Write-Output "starting script ...`n"
 
 Set-Location $path
 
@@ -20,7 +22,9 @@ while (($user_input -lt 1) -or ($user_input -gt 2)) { # 1 - 4
 switch ($user_input) {
 
     1 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv" }
+    1 { $ssh_file = ".\resources\ssh_files\Vagrantfile_hyperv_ssh" }
     2 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb" }
+    2 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh" }
     # 3 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv_20" }
     # 4 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb_20" }
     default { "Error: No valid provider" }
@@ -38,13 +42,13 @@ If ($file_exits -eq $True) {
 
     Remove-Item $file_to_check
 
-    Write-Output "creating new vagrant file ..."
+    Write-Output "creating new Vagrantfile ..."
 
     Copy-Item -Path $vagrantfile -Destination .\Vagrantfile
 
 }
 else {
-    Write-Output "creating vagrant file ..."
+    Write-Output "creating Vagrantfile ..."
 
     Copy-Item -Path $vagrantfile -Destination .\Vagrantfile
 }
@@ -82,8 +86,12 @@ Start-Sleep -s 15
 Write-Output "waiting   5 seconds for the machine to reboot ..."
 Start-Sleep -s 5
 
-Write-Output "`n####### VM SUCESSFULL INITIALIZED #######`n"
+Write-Output "\n####### VM SUCESSFULL INITIALIZED #######\n\n"
 
-Write-Output "starting first ssh session ..."
+Write-Output "changing ssh user to websec ...\n"
 
+Remove-Item .\Vagrantfile
+Copy-Item -Path $ssh_file -Destination .\Vagrantfile
+
+Write-Output"starting first ssh session ..."
 vagrant ssh
