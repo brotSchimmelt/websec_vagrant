@@ -23,7 +23,6 @@ config.vm.provider "virtualbox" do |vb|
 end
 
   config.vm.provision "file", source: "./resources/websec", destination: "/home/vagrant/websec"
-  config.vm.provision "file", source: "./resources/packages_websec.txt", destination: "/home/vagrant/packages_websec.txt"
   config.vm.provision "file", source: "./resources/cleanup.sh", destination: "/home/vagrant/cleanup.sh"
   config.vm.provision :shell, path: "bootstrap.sh", privileged: true
 end
