@@ -3,5 +3,7 @@ webserver/.vagrant
 
 # the websec project dir
 webserver/resources/websec/
-.DS_Store
 webserver/Vagrantfile
+
+# file system
+.DS_Store
