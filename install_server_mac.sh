@@ -1,4 +1,3 @@
-#!/bin/zsh
 
 # Path to the vagrant folder
 path="./webserver"
