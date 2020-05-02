@@ -13,8 +13,6 @@ useradd -m -s /bin/bash -G sudo,adm,cdrom,sudo,dip,plugdev,lxd websec
 echo websec:websec | chpasswd
 # passwd -e websec
 
-mv /home/vagrant/cleanup.sh /home/websec/cleanup.sh
-mv /home/vagrant/packages_websec.txt /home/websec/packages_websec.txt
 
 echo "install webserver ..."
 apt-get -y install apache2 php libapache2-mod-php mysql-server php-mysql
@@ -52,8 +50,7 @@ echo "
 
 
 Remember to change passwords for vagrant ('vagrant'),
-root ('vagrant') and websec ('websec') as soon as possible
-with the cleanup.sh script!
+root ('vagrant') and websec ('websec') as soon as possible!
 
 
 " >> /etc/motd
