@@ -2,7 +2,7 @@
 
 echo "update packages ..."
 apt-get update
-apt-get upgrade -y
+DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq
 apt-get autoremove -y
 
 echo "install utilities ..."
@@ -31,10 +31,9 @@ rm /var/www/html/index.html
 # systemctl enable docker
 
 mv /home/vagrant/websec /var/www/html/websec
-# change mod to make database writeable
+# TODO: change mod to make database writeable
 
 touch /etc/motd
-
 echo "
 
 
@@ -47,5 +46,4 @@ echo "
 " >> /etc/motd
 
 echo "reboot ..."
-
 reboot
