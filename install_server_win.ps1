@@ -97,5 +97,5 @@ Write-Output "changing ssh user to websec ...\n"
 Remove-Item .\Vagrantfile
 Copy-Item -Path $ssh_file -Destination .\Vagrantfile
 
-Write-Output"starting first ssh session ..."
+Write-Output "starting first ssh session ..."
 vagrant ssh
