@@ -48,9 +48,13 @@ echo "
  _    _  ____  ____  ___  ____  ___ 
 ( \/\/ )( ___)(  _ \/ __)( ___)/ __)
  )    (  )__)  ) _ <\__ \ )__)( (__ 
-(__/\__)(____)(____/(___/(____)\___)
+(__/\__)(____)(____/(___/(____)\___)...dev_server
 
 
+
+Remember to change passwords for vagrant ('vagrant'),
+root ('vagrant') and websec ('websec') as soon as possible
+with the cleanup.sh script!
 
 " >> /etc/motd
 
