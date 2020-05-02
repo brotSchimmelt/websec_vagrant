@@ -30,8 +30,9 @@ rm /var/www/html/index.html
 # systemctl start docker
 # systemctl enable docker
 
+cp /home/vagrant/websec /home/websec/websec_backup
 mv /home/vagrant/websec /var/www/html/websec
-# TODO: change mod to make database writeable
+# TODO: chmod to make database writeable
 
 touch /etc/motd
 echo "
