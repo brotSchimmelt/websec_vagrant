@@ -1,3 +1,5 @@
 #! /bin/bash
 
-passwd -l vagrant
+passwd -e vagrant
+passwd -e root
+passwd -e websec
