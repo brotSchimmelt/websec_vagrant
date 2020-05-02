@@ -5,7 +5,7 @@ path="./webserver"
 # virtualbox specific vagrantfile (default)
 vagrantfile="./Vagrantfiles/Vagrantfile_vb"
 # vagrantfile with ssh user
-ssh_file="./resources/ssh_files/Vagrant_vb_ssh"
+ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh"
 
 printf "starting script ...\n"
 
@@ -24,11 +24,11 @@ cd $path
 # case $user_input in
 #     1) 
 #         vagrantfile="./Vagrantfiles/Vagrantfile_vb"
-#         ssh_file="./resources/ssh_files/Vagrant_vb_ssh"
+#         ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh"
 #         ;;
 #     2)
 #         vagrantfile="./Vagrantfiles/Vagrantfile_vb_20"
-#         ssh_file="./resources/ssh_files/Vagrant_vb_ssh_20"
+#         ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh_20"
 #         ;;
 #     *)
 #         echo "Error: No valid provider"
