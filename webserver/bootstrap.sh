@@ -44,7 +44,6 @@ chown websec:websec /home/websec/.ssh/authorized_keys
 touch /etc/motd
 echo "
 
-
  _    _  ____  ____  ___  ____  ___ 
 ( \/\/ )( ___)(  _ \/ __)( ___)/ __)
  )    (  )__)  ) _ <\__ \ )__)( (__ 
@@ -55,6 +54,7 @@ echo "
 Remember to change passwords for vagrant ('vagrant'),
 root ('vagrant') and websec ('websec') as soon as possible
 with the cleanup.sh script!
+
 
 " >> /etc/motd
 
