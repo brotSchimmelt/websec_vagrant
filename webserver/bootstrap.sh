@@ -11,7 +11,7 @@ apt-get -y install mc
 echo "create new user ..."
 useradd -m -s /bin/bash -G sudo,adm,cdrom,sudo,dip,plugdev,lxd websec
 echo websec:websec | chpasswd
-passwd -e websec
+# passwd -e websec
 
 mv /home/vagrant/cleanup.sh /home/websec/cleanup.sh
 mv /home/vagrant/packages_websec.txt /home/websec/packages_websec.txt
