@@ -30,7 +30,7 @@ rm /var/www/html/index.html
 
 cp -r /home/vagrant/websec /home/websec/websec_backup
 mv /home/vagrant/websec /var/www/html/websec
-# TODO: chmod to make database writeable
+chown www-data /var/www/html/websec/databases
 
 # copy authorized keys to new user
 sudo -i
