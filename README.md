@@ -37,6 +37,7 @@ To run the install script you need to set an exception from the default windows 
 ```
 $ powershell -ep RemoteSigned -file install_server_win.ps1
 ```
+Also, powershell needs to be executed with admin rights in order to work properly with vagrant and Hyper-V.
 
 ### Linux
 ### macOS 
