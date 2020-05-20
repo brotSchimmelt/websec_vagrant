@@ -6,9 +6,22 @@ A virtual machine (VM) provider like *Hyper-V* or *VirtualBox* must be installed
 
 ## Install Vagrant on Linux (debian based)
 
+Install Vagrant with the package manager:
+```
+sudo apt-get install vagrant
+```
+
 ## Install Vagrant on macOS
 
+Download and install Vagrant from [HashiCorp](https://www.vagrantup.com/downloads.html).
+
 ## Install Vagrant on Windows 10
+
+Download and install Vagrant from [HashiCorp](https://www.vagrantup.com/downloads.html).
+If you wish to use *VirtualBox* instead of *Hyper-V* you need to disable it via the powershell:
+```
+$ Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
 
 ## Vagrant Commands
 - [**vagrant init**](https://www.vagrantup.com/docs/cli/init.html)
@@ -35,12 +48,8 @@ The equivalent of running a `halt` followed by an `up`. This command is usually 
 - [**vagrant destroy**](https://www.vagrantup.com/docs/cli/destroy.html) 
 This command stops the running machine Vagrant is managing and destroys all resources that were created during the machine creation process. 
 
+## Linux & macOS Setup Script
 
-
-
-
-## Linux
-## macOS
 
 ## Windows Setup Script 
 
