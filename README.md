@@ -50,6 +50,7 @@ This command stops the running machine Vagrant is managing and destroys all reso
 
 ## Linux & macOS Setup Script
 
+In order to setup the Webserver for the websec project (**TODO**: add link to GitHub) simply run the ```install_server.sh``` script and when prompted choose your VM provider.
 
 ## Windows Setup Script 
 
@@ -58,8 +59,14 @@ To run the install script you need to set an exception from the default windows 
 $ powershell -ep RemoteSigned -file install_server_win.ps1
 ```
 Also, powershell needs to be executed with admin rights in order to work properly with vagrant and Hyper-V.
+
+In order to setup the Webserver for the websec project (**TODO**: add link to GitHub) simply run the ```install_server_win.ps1``` script and when prompted choose your VM provider *(Hyper-V or VirtualBox)*.
  
 ## Post Installation
+
+**TODO:** what is to do after first installation? ssh? provisioning?
  
-## Webserver
+## How it Works?
+
+**TODO:** What happens when the script is executed and how is the webserver provisioned? How does the Git integration work?
  
