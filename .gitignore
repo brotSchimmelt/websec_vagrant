@@ -5,6 +5,9 @@ webserver/.vagrant
 webserver/resources/websec/
 webserver/Vagrantfile
 
+# the docker dir
+webserver/resources/docker/
+
 # file system
 .DS_Store
 
