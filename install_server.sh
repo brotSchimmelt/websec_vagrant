@@ -1,6 +1,6 @@
 
 # Path to the vagrant folder
-path="./webserver"
+path="./websec"
 # virtualbox specific vagrantfile (default)
 vagrantfile="./Vagrantfiles/Vagrantfile_vb"
 # vagrantfile with ssh user

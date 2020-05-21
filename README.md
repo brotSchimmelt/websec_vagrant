@@ -2,7 +2,7 @@
 **TODO**: Add short description.
 
 ## Requirements
-A virtual machine (VM) provider like *Hyper-V* or *VirtualBox* must be installed. Furthermore, there should be at least **2GB** of free RAM available in order for the Server to work.
+A virtual machine (VM) provider like *Hyper-V* or *VirtualBox* must be installed. Furthermore, there should be at least **2GB** of free RAM available in order for the server to work properly.
 
 ## Install Vagrant on Linux (debian based)
 

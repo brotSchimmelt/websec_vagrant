@@ -1,12 +1,18 @@
 # the virtual machine
-webserver/.vagrant
+websec/.vagrant
 
 # the websec project dir
-webserver/resources/websec/
-webserver/Vagrantfile
+websec/resources/www/
+websec/Vagrantfile
+
+# the docker dir
+websec/resources/docker/
 
 # file system
 .DS_Store
 
 # log files
 *.log
+
+# local settings
+.vscode

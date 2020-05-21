@@ -13,8 +13,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox"
 
-  config.ssh.username = "websec"
-
 config.vm.provider "virtualbox" do |vb|
 
   vb.name = "websec_dev_server"
@@ -22,6 +20,7 @@ config.vm.provider "virtualbox" do |vb|
   vb.cpus = 2
 end
 
-  config.vm.provision "file", source: "./resources/websec", destination: "/home/vagrant/websec"
+  config.vm.provision "file", source: "./resources/www", destination: "/home/vagrant/websec"
+  config.vm.provision "file", source: "./resources/docker", destination: "/home/vagrant/docker"
   config.vm.provision :shell, path: "bootstrap.sh", privileged: true
 end
