@@ -14,8 +14,6 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "hyperv"
 
-  config.ssh.username = "websec"
-
 config.vm.provider "hyperv" do |h|
   h.enable_virtualization_extensions = true
   h.linked_clone = true
@@ -25,7 +23,7 @@ config.vm.provider "hyperv" do |h|
   h.vmname = "websec_dev_server"
 end
 
-  config.vm.provision "file", source: "./resources/websec", destination: "/home/vagrant/websec"
+  config.vm.provision "file", source: "./resources/www", destination: "/home/vagrant/websec"
   config.vm.provision "file", source: "./resources/docker", destination: "/home/vagrant/docker"
   config.vm.provision :shell, path: "bootstrap.sh", privileged: true
 end
