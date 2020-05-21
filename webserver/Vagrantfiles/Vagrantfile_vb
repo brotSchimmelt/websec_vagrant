@@ -21,5 +21,6 @@ config.vm.provider "virtualbox" do |vb|
 end
 
   config.vm.provision "file", source: "./resources/websec", destination: "/home/vagrant/websec"
+  config.vm.provision "file", source: "./resources/docker", destination: "/home/vagrant/docker"
   config.vm.provision :shell, path: "bootstrap.sh", privileged: true
 end
