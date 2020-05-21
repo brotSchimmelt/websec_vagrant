@@ -13,3 +13,6 @@ websec/resources/docker/
 
 # log files
 *.log
+
+# local settings
+.vscode
