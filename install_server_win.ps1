@@ -12,10 +12,9 @@ Set-Location $path
 # select vm provider
 $user_input = -1
 while (($user_input -lt 1) -or ($user_input -gt 2)) {
-    # 1 - 4
 
     Write-Output "1) Hyper-V [Ubuntu 18]`n2) VirtualBox [Ubuntu 18]`n"
-    # Write-Output "3) Hyper-V [Ubuntu 20]`n4) VirtualBox [Ubuntu 20]`n`n"
+    # 3) VirtualBox [Ubuntu 20]`n
     $user_input = Read-Host "Select a provider"
 }
 
@@ -26,10 +25,8 @@ switch ($user_input) {
     1 { $ssh_file = ".\resources\ssh_files\Vagrantfile_hyperv_ssh" }
     2 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb" }
     2 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh" }
-    # 3 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv_20" }
-    # 3 { $ssh_file = ".\Vagrantfiles\Vagrantfile_hyperv_ssh_20" }
-    # 4 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb_20" }
-    # 4 { $ssh_file = = ".\Vagrantfiles\Vagrantfile_vb_ssh_20" }
+    # 3 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb_20" }
+    # 3 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh_20" }
     default { "Error: No valid provider" }
 }
 
