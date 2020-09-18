@@ -1,6 +1,6 @@
 
 # Path to the vagrant folder
-path="./websec"
+path="./vagrant"
 # virtualbox specific vagrantfile (default)
 vagrantfile="./Vagrantfiles/Vagrantfile_vb"
 # vagrantfile with ssh user
@@ -10,6 +10,11 @@ printf "starting script ...\n"
 
 cd $path
 
+#########################################################################
+#                                                                       #
+#       Only relevant if Ubuntu 20 is also supported by vagrant         #    
+#                                                                       #
+#########################################################################
 # # select vm provider
 # user_input=-1
 # while (( $user_input < 1 || $user_input > 2))

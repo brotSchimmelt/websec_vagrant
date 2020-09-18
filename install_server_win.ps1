@@ -1,5 +1,5 @@
 # Path to the vagrant folder
-$path = ".\websec"
+$path = ".\vagrant"
 # hyper-v specific vagrantfile (default)
 $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv"
 # vagrantfile with ssh user
