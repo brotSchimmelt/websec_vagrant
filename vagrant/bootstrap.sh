@@ -14,13 +14,22 @@ echo websec:websec | chpasswd
 # # websec user needs to change password on first login
 # passwd -e websec
 
-# # only needed if apache should run directly in the vm
+#########################################################################
+#                                                                       #
+#       Only needed if apache should run directly in the vm             #    
+#                                                                       #
+#########################################################################
 # echo "install webserver ..."
 # apt-get -y install apache2 php libapache2-mod-php mysql-server php-mysql
 # rm /var/www/html/index.html
 # mv /home/vagrant/websec /var/www/html/websec
 # chown www-data /var/www/html/websec/databases
 
+#########################################################################
+#                                                                       #
+#       Only needed if apache should run in a docker container          #    
+#                                                                       #
+#########################################################################
 echo "install docker ..."
 DEBIAN_FRONTEND=noninteractive apt-get install apt-transport-https ca-certificates curl software-properties-common -yq
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
