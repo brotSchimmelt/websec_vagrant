@@ -20,7 +20,7 @@ config.vm.provider "hyperv" do |h|
   h.cpus = 2
   h.maxmemory = 4096
   h.memory = 2048
-  h.vmname = "websec_dev_server"
+  h.vmname = "websec_test_server"
 end
 
   config.vm.provision "file", source: "./resources/websec", destination: "/home/vagrant/websec"
