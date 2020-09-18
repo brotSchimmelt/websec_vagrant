@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.network "public_network"
 
-  config.vm.hostname = "websec-dev-server"
+  config.vm.hostname = "websec-test-server"
 
   config.vm.provider "virtualbox"
 
