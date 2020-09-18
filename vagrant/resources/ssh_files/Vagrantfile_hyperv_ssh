@@ -1,0 +1,31 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "hashicorp/bionic64"
+
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  # my_switch is predefined in this Hyper-V setup
+  config.vm.network "public_network", bridge: "my_switch" # external switch
+
+  config.vm.hostname = "websec-dev-server"
+
+  config.vm.provider "hyperv"
+
+  config.ssh.username = "websec"
+
+config.vm.provider "hyperv" do |h|
+  h.enable_virtualization_extensions = true
+  h.linked_clone = true
+  h.cpus = 2
+  h.maxmemory = 4096
+  h.memory = 2048
+  h.vmname = "websec_dev_server"
+end
+
+  config.vm.provision "file", source: "./resources/www", destination: "/home/vagrant/websec"
+  config.vm.provision "file", source: "./resources/docker", destination: "/home/vagrant/docker"
+  config.vm.provision :shell, path: "bootstrap.sh", privileged: true
+end
