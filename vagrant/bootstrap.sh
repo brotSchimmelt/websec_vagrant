@@ -11,7 +11,8 @@ apt-get -y install mc
 echo "create new user ..."
 useradd -m -s /bin/bash -G sudo,adm,cdrom,sudo,dip,plugdev,lxd websec
 echo websec:websec | chpasswd
-# passwd -e websec # websec needs to change password on first login
+# # websec user needs to change password on first login
+# passwd -e websec
 
 # # only needed if apache should run directly in the vm
 # echo "install webserver ..."
