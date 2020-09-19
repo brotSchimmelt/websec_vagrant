@@ -22,6 +22,6 @@ config.vm.provider "virtualbox" do |vb|
   vb.cpus = 2
 end
 
-  config.vm.provision "file", source: "./resources/websec", destination: "/home/vagrant/websec"
+  config.vm.provision "file", source: "./resources/websec.tar", destination: "/home/vagrant/websec.tar"
   config.vm.provision :shell, path: "bootstrap.sh", privileged: true
 end

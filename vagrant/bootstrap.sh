@@ -38,8 +38,6 @@ apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install docker-ce -yq
 systemctl start docker
 systemctl enable docker
-# # changing ownership of data folder
-# chown www-data /home/vagrant/websec/www/data
 
 echo "wait for docker ..."
 sleep 30
@@ -53,8 +51,13 @@ curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compo
 chmod +x /usr/local/bin/docker-compose
 
 echo "copy files for webserver ..."
-cp -r /home/vagrant/websec /home/websec/backup_websec
-mv /home/vagrant/websec /home/websec/websec_hacking_tool
+cp /home/vagrant/websec.tar /home/websec/websec.tar
+mv /home/vagrant/websec.tar /home/websec/hacking_platform_backup.tar
+tar -C /home/websec/ -xvf /home/websec/websec.tar
+sleep 5
+mv /home/websec/websec /home/websec/hacking_platform
+rm /home/websec/websec.tar
+chown www-data /home/websec/hacking_platform/www/data
 
 echo "copy authorized keys to new user ..."
 sudo -i
@@ -76,8 +79,9 @@ Remember to change passwords for vagrant ('vagrant'),
 root ('vagrant') and websec ('websec') as soon as possible!
 
 --> Start the webserver with:
-1. $ cd websec_hacking_tool
-2. $ docker-compose up -d
+1. $ cd hacking_tool
+2. $ setup_docker.sh (only for first setup)
+3. $ docker-compose up -d
 
 
 " >> /etc/motd

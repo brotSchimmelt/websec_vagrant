@@ -23,6 +23,6 @@ config.vm.provider "hyperv" do |h|
   h.vmname = "websec_test_server"
 end
 
-  config.vm.provision "file", source: "./resources/websec", destination: "/home/vagrant/websec"
+  config.vm.provision "file", source: "./resources/websec.tar", destination: "/home/vagrant/websec.tar"
   config.vm.provision :shell, path: "bootstrap.sh", privileged: true
 end
