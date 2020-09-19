@@ -2,7 +2,7 @@
 vagrant/.vagrant
 
 # the websec project dir
-vagrant/resources/websec/
+*.tar
 vagrant/Vagrantfile
 
 # file system
