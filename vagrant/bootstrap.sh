@@ -86,9 +86,9 @@ echo "
 Remember to change passwords for vagrant ('vagrant'),
 root ('vagrant') and websec ('websec') as soon as possible!
 
---> Start the webserver with:
+--> If you choose to install the webserver within docker, follow these steps:
 1. $ cd hacking_platform
-2. $ setup_docker.sh (only for first setup)
+2. $ setup_docker.sh (only for the first setup)
 3. $ docker-compose up -d
 
 
