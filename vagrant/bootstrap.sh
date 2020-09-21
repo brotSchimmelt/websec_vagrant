@@ -1,5 +1,17 @@
 #!/bin/bash
 
+#########################################################################################
+#   Purpose: Set up a webserver in the VM with the porject files.                       #
+#   Test: Tested under Ubuntu 18 LTS                                                    #
+#   Note: Not yet tested under Ubuntu 20 LTS                                            #
+#                                                                                       #
+#   Update packages and install better file explorer                                    #
+#   Add new websec user                                                                 #
+#   Either install Apache locally or isntall docker                                     #
+#   Copy project files to home folder                                                   #
+#   Add shh keys                                                                        #
+#########################################################################################
+
 echo "update packages ..."
 apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq
@@ -14,10 +26,10 @@ echo websec:websec | chpasswd
 
 #########################################################################
 #                                                                       #
-#       Only needed if apache should run directly in the vm             #    
+#       Uncomment if apache should run directly in the VM (XOR)         #    
 #                                                                       #
 #########################################################################
-# echo "install webserver ..."
+# echo "install local webserver ..."
 # apt-get -y install apache2 php libapache2-mod-php mysql-server php-mysql
 # rm /var/www/html/index.html
 # mv /home/vagrant/websec /var/www/html/websec
@@ -25,7 +37,7 @@ echo websec:websec | chpasswd
 
 #########################################################################
 #                                                                       #
-#       Only needed if apache should run in a docker container          #    
+#       Uncomment if apache should run in a docker container (XOR)      #    
 #                                                                       #
 #########################################################################
 echo "install docker ..."

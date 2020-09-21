@@ -1,4 +1,15 @@
-# Path to the vagrant folder
+#########################################################################################
+#   Purpose: This script sets the Vagrant environment for the websec test server.       #
+#   Test: Tested under Windows 10 with VirtualBox and Hyper-V                           #
+#   Note: Ubuntu 20 Support is currently deactivated                                    #
+#                                                                                       #
+#   Get user input for hypervisor and host OS version                                   #
+#   Copy corresponding Vagrantfile from resources to work dir                           #
+#   Spin VM up with vagrant up command                                                  #
+#   Change Vagrantfile in order to set new ssh user                                     #
+#########################################################################################
+
+# path to the vagrant folder
 $path = ".\vagrant"
 # hyper-v specific vagrantfile (default)
 $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv"

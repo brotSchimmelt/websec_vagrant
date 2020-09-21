@@ -1,5 +1,15 @@
+#########################################################################################
+#   Purpose: This script sets the Vagrant environment for the websec test server.       #
+#   Test: Tested under macOS 10.15 and Ubuntu 20 LTS with VirtualBox                    #
+#   Note: Ubuntu 20 Support is currently deactivated                                    #
+#                                                                                       #
+#   Get user input for hypervisor and host OS version                                   #
+#   Copy corresponding Vagrantfile from resources to work dir                           #
+#   Spin VM up with vagrant up command                                                  #
+#   Change Vagrantfile in order to set new ssh user                                     #
+#########################################################################################
 
-# Path to the vagrant folder
+# path to the vagrant folder
 path="./vagrant"
 # virtualbox specific vagrantfile (default)
 vagrantfile="./Vagrantfiles/Vagrantfile_vb"
