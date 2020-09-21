@@ -1,15 +1,12 @@
-# the virtual machine
+# macOS file system specific files
+.DS_Store
+
+# the current instance of the VM
 vagrant/.vagrant
+vagrant/Vagrantfile
 
 # the websec project dir
 *.tar
-vagrant/Vagrantfile
-
-# file system
-.DS_Store
 
 # log files
 *.log
-
-# local settings
-.vscode
