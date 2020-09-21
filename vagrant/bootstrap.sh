@@ -11,8 +11,6 @@ apt-get -y install mc
 echo "create new user ..."
 useradd -m -s /bin/bash -G sudo,adm,cdrom,sudo,dip,plugdev,lxd websec
 echo websec:websec | chpasswd
-# # websec user needs to change password on first login
-# passwd -e websec
 
 #########################################################################
 #                                                                       #
