@@ -79,7 +79,7 @@ Remember to change passwords for vagrant ('vagrant'),
 root ('vagrant') and websec ('websec') as soon as possible!
 
 --> Start the webserver with:
-1. $ cd hacking_tool
+1. $ cd hacking_platform
 2. $ setup_docker.sh (only for first setup)
 3. $ docker-compose up -d
 
