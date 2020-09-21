@@ -24,6 +24,13 @@ echo "create new user ..."
 useradd -m -s /bin/bash -G sudo,adm,cdrom,sudo,dip,plugdev,lxd websec
 echo websec:websec | chpasswd
 
+echo "copy authorized keys to new user ..."
+sudo -i
+mkdir /home/websec/.ssh/
+cp /home/vagrant/.ssh/authorized_keys /home/websec/.ssh/authorized_keys
+chmod 600 /home/websec/.ssh/authorized_keys
+chown websec:websec /home/websec/.ssh/authorized_keys
+
 #########################################################################
 #                                                                       #
 #       Uncomment if apache should run directly in the VM (XOR)         #    
@@ -50,15 +57,7 @@ systemctl enable docker
 echo "wait for docker ..."
 sleep 30
 
-echo "add user to group docker ..."
-groupadd docker
-usermod -aG docker websec
-
-echo "instal docker compose ..."
-curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-
-echo "copy files for webserver ..."
+echo "copy project files for apache docker container ..."
 cp /home/vagrant/websec.tar /home/websec/websec.tar
 mv /home/vagrant/websec.tar /home/websec/hacking_platform_backup.tar
 tar -C /home/websec/ -xvf /home/websec/websec.tar
@@ -67,12 +66,13 @@ mv /home/websec/websec /home/websec/hacking_platform
 rm /home/websec/websec.tar
 chown www-data /home/websec/hacking_platform/www/data
 
-echo "copy authorized keys to new user ..."
-sudo -i
-mkdir /home/websec/.ssh/
-cp /home/vagrant/.ssh/authorized_keys /home/websec/.ssh/authorized_keys
-chmod 600 /home/websec/.ssh/authorized_keys
-chown websec:websec /home/websec/.ssh/authorized_keys
+echo "add user to group docker ..."
+groupadd docker
+usermod -aG docker websec
+
+echo "instal docker compose ..."
+curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 touch /etc/motd
 echo "
