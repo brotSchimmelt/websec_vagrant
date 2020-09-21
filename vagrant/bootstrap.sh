@@ -32,8 +32,6 @@ echo websec:websec | chpasswd
 # echo "install local webserver ..."
 # apt-get -y install apache2 php libapache2-mod-php mysql-server php-mysql
 # rm /var/www/html/index.html
-# mv /home/vagrant/websec /var/www/html/websec
-# chown www-data /var/www/html/websec/databases
 
 #########################################################################
 #                                                                       #
