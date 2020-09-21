@@ -65,6 +65,7 @@ tar -C /home/websec/ -xvf /home/websec/websec.tar
 sleep 5
 mv /home/websec/websec /home/websec/hacking_platform
 rm /home/websec/websec.tar
+# the www-data user needs to have ownership over the 'data' folder in order to create the SQLite DBs
 chown www-data /home/websec/hacking_platform/www/data
 
 echo "add user to group docker ..."
