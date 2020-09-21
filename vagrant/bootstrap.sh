@@ -33,12 +33,13 @@ chown websec:websec /home/websec/.ssh/authorized_keys
 
 #########################################################################
 #                                                                       #
-#       Uncomment if apache should run directly in the VM (XOR)         #    
+#       Uncomment if apache should run locally in the VM (XOR)          #    
 #                                                                       #
 #########################################################################
-# echo "install local webserver ..."
+# echo "install local apache webserver ..."
 # apt-get -y install apache2 php libapache2-mod-php mysql-server php-mysql
 # rm /var/www/html/index.html
+##### END: apache section #####
 
 #########################################################################
 #                                                                       #
@@ -73,6 +74,7 @@ usermod -aG docker websec
 echo "instal docker compose ..."
 curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
+##### END: docker section #####
 
 touch /etc/motd
 echo "
