@@ -12,7 +12,7 @@
 # path to the vagrant folder
 path="./vagrant"
 # virtualbox specific vagrantfile (default)
-vagrantfile="./Vagrantfiles/Vagrantfile_vb"
+vagrantfile="./resources/Vagrantfiles/Vagrantfile_vb"
 # vagrantfile with ssh user
 ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh"
 
@@ -25,7 +25,7 @@ cd $path
 #       Only relevant if Ubuntu 20 is also supported by vagrant         #    
 #                                                                       #
 #########################################################################
-# # select vm provider
+# # select VM provider
 # user_input=-1
 # while (( $user_input < 1 || $user_input > 2))
 # do
@@ -81,7 +81,7 @@ else
 fi
 
 
-# set up the vm with vagrant
+# set up the VM with vagrant
 printf "\n######## VAGRANT UP ########\n\n"
 
 vagrant up

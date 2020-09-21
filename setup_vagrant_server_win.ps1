@@ -12,7 +12,7 @@
 # path to the vagrant folder
 $path = ".\vagrant"
 # hyper-v specific vagrantfile (default)
-$vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv"
+$vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_hyperv"
 # vagrantfile with ssh user
 $ssh_file = ".\resources\ssh_files\Vagrantfile_hyperv_ssh"
 
@@ -20,7 +20,7 @@ Write-Output "starting script ...`n"
 
 Set-Location $path
 
-# select vm provider
+# select VM provider
 $user_input = -1
 while (($user_input -lt 1) -or ($user_input -gt 2)) {
 
@@ -78,7 +78,7 @@ else {
 }
 
 
-# set up the vm with vagrant
+# set up the VM with vagrant
 Write-Output "`n######## VAGRANT UP ########`n"
 
 vagrant up
