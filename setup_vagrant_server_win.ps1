@@ -32,11 +32,11 @@ while (($user_input -lt 1) -or ($user_input -gt 2)) {
 # choose Vagrantfile
 switch ($user_input) {
 
-    1 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv" }
+    1 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_hyperv" }
     1 { $ssh_file = ".\resources\ssh_files\Vagrantfile_hyperv_ssh" }
-    2 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb" }
+    2 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_vb" }
     2 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh" }
-    # 3 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb_20" }
+    # 3 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_vb_20" }
     # 3 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh_20" }
     default { "Error: No valid provider" }
 }

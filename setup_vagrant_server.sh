@@ -37,11 +37,11 @@ cd $path
 # # choose Vagrantfile
 # case $user_input in
 #     1) 
-#         vagrantfile="./Vagrantfiles/Vagrantfile_vb"
+#         vagrantfile="./resources/Vagrantfiles/Vagrantfile_vb"
 #         ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh"
 #         ;;
 #     2)
-#         vagrantfile="./Vagrantfiles/Vagrantfile_vb_20"
+#         vagrantfile="./resources/Vagrantfiles/Vagrantfile_vb_20"
 #         ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh_20"
 #         ;;
 #     *)
