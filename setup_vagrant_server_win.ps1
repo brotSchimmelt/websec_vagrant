@@ -1,7 +1,18 @@
-# Path to the vagrant folder
-$path = ".\websec"
+#########################################################################################
+#   Purpose: This script sets the Vagrant environment for the websec test server.       #
+#   Test: Tested under Windows 10 with VirtualBox and Hyper-V                           #
+#   Note: Ubuntu 20 Support is currently deactivated                                    #
+#                                                                                       #
+#   Get user input for hypervisor and host OS version                                   #
+#   Copy corresponding Vagrantfile from resources to work dir                           #
+#   Spin VM up with vagrant up command                                                  #
+#   Change Vagrantfile in order to set new ssh user                                     #
+#########################################################################################
+
+# path to the vagrant folder
+$path = ".\vagrant"
 # hyper-v specific vagrantfile (default)
-$vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv"
+$vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_hyperv"
 # vagrantfile with ssh user
 $ssh_file = ".\resources\ssh_files\Vagrantfile_hyperv_ssh"
 
@@ -9,27 +20,24 @@ Write-Output "starting script ...`n"
 
 Set-Location $path
 
-# select vm provider
+# select VM provider
 $user_input = -1
 while (($user_input -lt 1) -or ($user_input -gt 2)) {
-    # 1 - 4
 
     Write-Output "1) Hyper-V [Ubuntu 18]`n2) VirtualBox [Ubuntu 18]`n"
-    # Write-Output "3) Hyper-V [Ubuntu 20]`n4) VirtualBox [Ubuntu 20]`n`n"
+    # 3) VirtualBox [Ubuntu 20]`n
     $user_input = Read-Host "Select a provider"
 }
 
 # choose Vagrantfile
 switch ($user_input) {
 
-    1 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv" }
+    1 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_hyperv" }
     1 { $ssh_file = ".\resources\ssh_files\Vagrantfile_hyperv_ssh" }
-    2 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb" }
+    2 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_vb" }
     2 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh" }
-    # 3 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_hyperv_20" }
-    # 3 { $ssh_file = ".\Vagrantfiles\Vagrantfile_hyperv_ssh_20" }
-    # 4 { $vagrantfile = ".\Vagrantfiles\Vagrantfile_vb_20" }
-    # 4 { $ssh_file = = ".\Vagrantfiles\Vagrantfile_vb_ssh_20" }
+    # 3 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_vb_20" }
+    # 3 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh_20" }
     default { "Error: No valid provider" }
 }
 
@@ -70,7 +78,7 @@ else {
 }
 
 
-# set up the vm with vagrant
+# set up the VM with vagrant
 Write-Output "`n######## VAGRANT UP ########`n"
 
 vagrant up

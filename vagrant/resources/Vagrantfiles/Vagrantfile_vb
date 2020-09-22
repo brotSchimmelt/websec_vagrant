@@ -9,18 +9,17 @@ Vagrant.configure("2") do |config|
 
   config.vm.network "public_network"
 
-  config.vm.hostname = "websec-dev-server"
+  config.vm.hostname = "websec-test-server"
 
   config.vm.provider "virtualbox"
 
 config.vm.provider "virtualbox" do |vb|
 
-  vb.name = "websec_dev_server"
+  vb.name = "websec_test_server"
   vb.memory = 2048
   vb.cpus = 2
 end
 
-  config.vm.provision "file", source: "./resources/www", destination: "/home/vagrant/websec"
-  config.vm.provision "file", source: "./resources/docker", destination: "/home/vagrant/docker"
+  config.vm.provision "file", source: "./resources/websec.tar", destination: "/home/vagrant/websec.tar"
   config.vm.provision :shell, path: "bootstrap.sh", privileged: true
 end

@@ -1,8 +1,18 @@
+#########################################################################################
+#   Purpose: This script sets the Vagrant environment for the websec test server.       #
+#   Test: Tested under macOS 10.15 and Ubuntu 20 LTS with VirtualBox                    #
+#   Note: Ubuntu 20 Support is currently deactivated                                    #
+#                                                                                       #
+#   Get user input for hypervisor and host OS version                                   #
+#   Copy corresponding Vagrantfile from resources to work dir                           #
+#   Spin VM up with vagrant up command                                                  #
+#   Change Vagrantfile in order to set new ssh user                                     #
+#########################################################################################
 
-# Path to the vagrant folder
-path="./websec"
+# path to the vagrant folder
+path="./vagrant"
 # virtualbox specific vagrantfile (default)
-vagrantfile="./Vagrantfiles/Vagrantfile_vb"
+vagrantfile="./resources/Vagrantfiles/Vagrantfile_vb"
 # vagrantfile with ssh user
 ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh"
 
@@ -10,7 +20,12 @@ printf "starting script ...\n"
 
 cd $path
 
-# # select vm provider
+#########################################################################
+#                                                                       #
+#       Only relevant if Ubuntu 20 is also supported by vagrant         #    
+#                                                                       #
+#########################################################################
+# # select VM provider
 # user_input=-1
 # while (( $user_input < 1 || $user_input > 2))
 # do
@@ -22,11 +37,11 @@ cd $path
 # # choose Vagrantfile
 # case $user_input in
 #     1) 
-#         vagrantfile="./Vagrantfiles/Vagrantfile_vb"
+#         vagrantfile="./resources/Vagrantfiles/Vagrantfile_vb"
 #         ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh"
 #         ;;
 #     2)
-#         vagrantfile="./Vagrantfiles/Vagrantfile_vb_20"
+#         vagrantfile="./resources/Vagrantfiles/Vagrantfile_vb_20"
 #         ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh_20"
 #         ;;
 #     *)
@@ -66,7 +81,7 @@ else
 fi
 
 
-# set up the vm with vagrant
+# set up the VM with vagrant
 printf "\n######## VAGRANT UP ########\n\n"
 
 vagrant up
