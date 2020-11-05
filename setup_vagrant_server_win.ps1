@@ -37,8 +37,8 @@ switch ($user_input) {
     1 { $ssh_file = ".\resources\ssh_files\Vagrantfile_hyperv_ssh" }
     2 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_vb" }
     2 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh" }
-    # 3 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_vb_20" }
-    # 3 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh_20" }
+    3 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_vb_20" }
+    3 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh_20" }
     default { "Error: No valid provider" }
 }
 
