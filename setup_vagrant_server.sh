@@ -26,29 +26,29 @@ cd $path
 #       Only relevant if Ubuntu 20 is also supported by vagrant         #    
 #                                                                       #
 #########################################################################
-# # select VM provider
-# user_input=-1
-# while (( $user_input < 1 || $user_input > 2)); do
-# printf "\n1) VirtualBox [Ubuntu18] 2) VirtualBox [Ubuntu20]\n\n"
-# printf "Select a provider: "
-# read user_input
-# done
+# select VM provider
+user_input=-1
+while (( $user_input < 1 || $user_input > 2)); do
+printf "\n1) VirtualBox [Ubuntu18] 2) VirtualBox [Ubuntu20]\n\n"
+printf "Select a provider: "
+read user_input
+done
 
-# # choose Vagrantfile
-# case $user_input in
-#     1) 
-#         vagrantfile="./resources/Vagrantfiles/Vagrantfile_vb"
-#         ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh"
-#         ;;
-#     2)
-#         vagrantfile="./resources/Vagrantfiles/Vagrantfile_vb_20"
-#         ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh_20"
-#         ;;
-#     *)
-#         echo "Error: No valid provider"
-#         exit 
-#         ;;
-# esac
+# choose Vagrantfile
+case $user_input in
+    1) 
+        vagrantfile="./resources/Vagrantfiles/Vagrantfile_vb"
+        ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh"
+        ;;
+    2)
+        vagrantfile="./resources/Vagrantfiles/Vagrantfile_vb_20"
+        ssh_file="./resources/ssh_files/Vagrantfile_vb_ssh_20"
+        ;;
+    *)
+        echo "Error: No valid provider"
+        exit 
+        ;;
+esac
 
 # overwrite existing Vagrantfile if necessary
 printf "checking if 'Vagrantfile' already exists ...\n"
@@ -66,7 +66,6 @@ else
     cp $vagrantfile ./Vagrantfile
 
 fi
-
 
 # check if Vagrantfile was succesfully created
 if [ ! -e ./Vagrantfile ]; then
