@@ -23,10 +23,10 @@ Set-Location $path
 
 # select VM provider
 $user_input = -1
-while (($user_input -lt 1) -or ($user_input -gt 2)) {
+while (($user_input -lt 1) -or ($user_input -gt 3)) {
 
-    Write-Output "1) Hyper-V [Ubuntu 18]`n2) VirtualBox [Ubuntu 18]`n"
-    # 3) VirtualBox [Ubuntu 20]`n
+    Write-Output "1) Hyper-V [Ubuntu 18]`n2) VirtualBox [Ubuntu 18]"
+    Write-Output "3) VirtualBox [Ubuntu 20]`n"
     $user_input = Read-Host "Select a provider"
 }
 
