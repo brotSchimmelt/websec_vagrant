@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/focal64"
+
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  config.vm.network "public_network"
+
+  config.vm.hostname = "websec-test-server"
+
+  config.vm.provider "virtualbox"
+
+  config.ssh.username = "websec"
+
+config.vm.provider "virtualbox" do |vb|
+
+  vb.name = "websec_test_server"
+  vb.memory = 2048
+  vb.cpus = 2
+end
+
+  config.vm.provision "file", source: "./resources/websec.tar", destination: "/home/vagrant/websec.tar"
+  config.vm.provision :shell, path: "bootstrap.sh", privileged: true
+end

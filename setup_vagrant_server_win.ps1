@@ -1,13 +1,14 @@
-#########################################################################################
-#   Purpose: This script sets the Vagrant environment for the websec test server.       #
-#   Test: Tested under Windows 10 with VirtualBox and Hyper-V                           #
-#   Note: Ubuntu 20 Support is currently deactivated                                    #
-#                                                                                       #
-#   Get user input for hypervisor and host OS version                                   #
-#   Copy corresponding Vagrantfile from resources to work dir                           #
-#   Spin VM up with vagrant up command                                                  #
-#   Change Vagrantfile in order to set new ssh user                                     #
-#########################################################################################
+################################################################################
+#   Purpose: This script sets up the Vagrant VM for windows.                   #
+#   Test: Tested under Windows 10 with VirtualBox and Hyper-V                  #
+#   Note: Ubuntu 20 Support is currently deactivated                           #
+#   Author: tknebler@gmail.com                                                 #
+#                                                                              #
+#   Get user input for hypervisor and host OS version                          #
+#   Copy corresponding Vagrantfile from resources to work dir                  #
+#   Spin VM up with vagrant up command                                         #
+#   Change Vagrantfile in order to set new ssh user                            #
+################################################################################
 
 # path to the vagrant folder
 $path = ".\vagrant"
@@ -22,10 +23,10 @@ Set-Location $path
 
 # select VM provider
 $user_input = -1
-while (($user_input -lt 1) -or ($user_input -gt 2)) {
+while (($user_input -lt 1) -or ($user_input -gt 3)) {
 
-    Write-Output "1) Hyper-V [Ubuntu 18]`n2) VirtualBox [Ubuntu 18]`n"
-    # 3) VirtualBox [Ubuntu 20]`n
+    Write-Output "1) Hyper-V [Ubuntu 18]`n2) VirtualBox [Ubuntu 18]"
+    Write-Output "3) VirtualBox [Ubuntu 20]`n"
     $user_input = Read-Host "Select a provider"
 }
 
@@ -36,8 +37,8 @@ switch ($user_input) {
     1 { $ssh_file = ".\resources\ssh_files\Vagrantfile_hyperv_ssh" }
     2 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_vb" }
     2 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh" }
-    # 3 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_vb_20" }
-    # 3 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh_20" }
+    3 { $vagrantfile = ".\resources\Vagrantfiles\Vagrantfile_vb_20" }
+    3 { $ssh_file = ".\resources\ssh_files\Vagrantfile_vb_ssh_20" }
     default { "Error: No valid provider" }
 }
 

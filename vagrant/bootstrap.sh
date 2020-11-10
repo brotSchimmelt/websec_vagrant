@@ -1,16 +1,17 @@
 #!/bin/bash
 
-#########################################################################################
-#   Purpose: Set up a webserver in the VM with the porject files.                       #
-#   Test: Tested under Ubuntu 18 LTS                                                    #
-#   Note: Not yet tested under Ubuntu 20 LTS                                            #
-#                                                                                       #
-#   Update packages and install better file explorer                                    #
-#   Add new websec user                                                                 #
-#   Either install Apache locally or isntall docker                                     #
-#   Copy project files to home folder                                                   #
-#   Add shh keys                                                                        #
-#########################################################################################
+################################################################################
+#   Purpose: Set up a webserver in the VM with the porject files.              #
+#   Test: Tested under Ubuntu 18 LTS                                           #
+#   Note: Not yet tested under Ubuntu 20 LTS                                   #
+#   Author: tknebler@gmail.com                                                 #                                     
+#                                                                              #
+#   Update packages and install better file explorer                           #
+#   Add new websec user                                                        #
+#   Either install Apache locally or isntall docker                            #
+#   Copy project files to home folder                                          #
+#   Add shh keys                                                               #
+################################################################################
 
 echo "update packages ..."
 apt-get update
@@ -44,7 +45,8 @@ rm /home/websec/websec.tar
 #                                                                       #
 #########################################################################
 # echo "install local apache webserver ..."
-# apt-get -y install apache2 php libapache2-mod-php mysql-server php-mysql php7.2-mbstring
+# apt-get -y install apache2 php libapache2-mod-php mysql-server \
+# php-mysql php7.2-mbstring
 
 # echo "install sMTP ..."
 # apt-get update && apt-get install msmtp -y
@@ -61,43 +63,52 @@ rm /home/websec/websec.tar
 # chown www-data /var/www/html/data
 
 # echo "set new document root ..."
-# sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
-# sed -ri -e 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+# sed -ri -e 's!/var/www/html!/var/www/html/public!g' \
+# /etc/apache2/sites-available/*.conf
+# sed -ri -e 's!/var/www/!/var/www/html/public!g' \
+# /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 # echo "configure php.ini ..."
 # # Set mSMTP as the default MTA in the php.ini
-# sed -i 's!;sendmail_path =!sendmail_path = /usr/bin/msmtp -t!g' /etc/php/7.2/apache2/php.ini
-# # Make sure the PHP session cookie can not be accidently changed by JavaScript in the XSS challenge
-# sed -i 's!session.cookie_httponly =!session.cookie_httponly =1!g' /etc/php/7.2/apache2/php.ini
+# sed -i 's!;sendmail_path =!sendmail_path = /usr/bin/msmtp -t!g' \
+# /etc/php/7.2/apache2/php.ini
+# # Make sure the PHP session cookie can not be accidently changed by JavaScript
+# # in the XSS challenge
+# sed -i 's!session.cookie_httponly =!session.cookie_httponly =1!g' \
+# /etc/php/7.2/apache2/php.ini
 
 # echo "restart apache ..."
 # systemctl stop apache2
 # sleep 5
 # systemctl start apache2
 
-# motdNote="Do not forget to configure a MySQL DB! You can use the SQL files in the docker version as a template."
+# motdNote="Do not forget to configure a MySQL DB! You can use the SQL "\
+# "files in the docker version as a template."
 ##### END: apache section #####
 
 #########################################################################
 #                                                                       #
-#       Uncomment if apache should run in a docker container (XOR)      #    
+#       Comment out if apache should run in a docker container (XOR)    #    
 #                                                                       #
 #########################################################################
 echo "install docker ..."
-DEBIAN_FRONTEND=noninteractive apt-get install apt-transport-https ca-certificates curl software-properties-common -yq
+DEBIAN_FRONTEND=noninteractive apt-get install apt-transport-https \
+ca-certificates curl software-properties-common -yq
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+add-apt-repository \
+"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install docker-ce -yq
 systemctl start docker
 systemctl enable docker
 
-echo "wait for docker ..."
-sleep 30
+echo "wait for docker to start ..."
+sleep 20
 
 echo "copy project files for apache docker container ..."
 mv /home/websec/websec /home/websec/hacking_platform
-# the www-data user needs to have ownership over the 'data' folder in order to create the SQLite DBs
+# the www-data user needs to have ownership over the 'data' folder
+# in order to create the SQLite DBs
 chown www-data /home/websec/hacking_platform/www/data
 
 echo "add user to group docker ..."
@@ -105,7 +116,9 @@ groupadd docker
 usermod -aG docker websec
 
 echo "instal docker compose ..."
-curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+curl -L \
+"https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" \
+-o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 motdNote="--> If you choose to install the webserver within docker, follow these steps:
 1. $ cd hacking_platform
